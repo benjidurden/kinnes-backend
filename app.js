@@ -1,10 +1,12 @@
 var express = require('express');
+require('dotenv').config()
 var cors = require('cors');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var axios = require('axios');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -15,6 +17,10 @@ app.use(cors())
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+process.on('uncaughtException', function (err){
+  console.log(err);
+})
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
