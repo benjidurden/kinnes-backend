@@ -37,5 +37,5 @@ db.none('insert into userCart(cartOwnerName, userItems, amountofPrints, amountof
 
 module.exports = {
     storeItem: storeItem,
-    addUser: addUser
+    addUser: addUser,
 }
