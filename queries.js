@@ -3,10 +3,7 @@ var options = {promiseLib: promise};
 
 var pgp = require('pg-promise')(options)
 pgp.pg.defaults.ssl = true;
-var connectionString = "postgres://fmqzwngfesodkk:7986af2692c53588bdda2eafc9de30e6ab6ae376454b78cc80aabb7fd0199d52@ec2-23-21-197-231.compute-1.amazonaws.com:5432/d1prc03vuqgjgo";
-//quick change so I can push
-// var connectionString = process.env.DATABASE_URL
-// var connectionString = 'postgres://localhost:5432/carts';
+var connectionString = process.env.DATABASE_URL;
 var db = pgp(connectionString);
 
 function addUser(req, res, next){
