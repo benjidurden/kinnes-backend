@@ -18,20 +18,35 @@ db.none('insert into userInfo(userName)' + 'values($1)', [req.body])
 })
 }
 
+// function storeItem (req, res, next){
+// db.none('insert into userCart(cartOwnerName, userItems, amountofPrints, amountofShirts, shirtSize)' + 'values(${cartOwnerName}, ${userItems}, ${amountofPrints}, ${amountofShirts}, ${shirtSize})', req.body)
+// .then(function (){
+//     res.status(200)
+//     .json({
+//         status: 'success',
+//         message: 'this worked!'
+//     })
+// })
+// .catch(function (err){
+//     console.log(err)
+//     return next(err)
+// })
+// }
+
 function storeItem (req, res, next){
-db.none('insert into userCart(cartOwnerName, userItems, amountofPrints, amountofShirts, shirtSize)' + 'values(${cartOwnerName}, ${userItems}, ${amountofPrints}, ${amountofShirts}, ${shirtSize})', req.body)
-.then(function (){
-    res.status(200)
-    .json({
-        status: 'success',
-        message: 'this worked!'
+    db.none('insert into userCart(cartOwnerName, userItems, amountofPrints, amountofShirts, shirtSize)' + 'values($1), ($2), ($3), ($4), ($5)', req.body)
+    .then(function (){
+        res.status(200)
+        .json({
+            status: 'success',
+            message: 'this worked!'
+        })
     })
-})
-.catch(function (err){
-    console.log(err)
-    return next(err)
-})
-}
+    .catch(function (err){
+        console.log(err)
+        return next(err)
+    })
+    }
 
 
 module.exports = {
